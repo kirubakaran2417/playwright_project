@@ -16,3 +16,13 @@ test('get started link', async ({ page }) => {
   // Expects page to have a heading with the name of Installation.
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
+test("understanding fixtures", async ({
+  page,      //A new browser tab is created for each test
+  context,   //A new browser context is created for each test
+  browser,   //A new browser is created for each test
+  request,   //A new request is created for each test
+  browserName //The name of the browser
+}) => {
+  console.log(`Running on: ${browserName}`);
+
+})
