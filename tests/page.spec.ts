@@ -59,3 +59,54 @@
 // await expect(page).toBeUnchecked();                 //Expect the page to be unchecked
 // await expect(page).toBeSelected();                  //Expect the page to be selected
 // await expect(page).toBeNotSelected();               //Expect the page to be not selected
+
+//locator types
+//1. locator() with css selector
+//By ID --> page.locator("#user-name")   //matches <input id="user-name">
+//By class --> page.locator(".btn")     //matches <button class="btn">
+//By attribute --> page.locator("[data-test='username'])   //matches <input data-test="username">
+//By element+attribute
+//page.locator("input[name='username']")   //matches <input name="username">
+//parent-child
+//page.locator("form").locator("input[name='username']")   //matches <form><input name="username"></form>
+//nth element
+//page.locator("li").nth(0)   //matches the first <li> element
+//combining:parent>child
+//page.locator(".login-form input[name='username']")   
+//matches 
+// <div class="login-form">
+// <input name="username">
+// </div>
+//getByRole() with ARIA role
+//By role and name --> page.getByRole("button", { name: "Submit" })   //matches <button>Submit</button>
+//different roles --> link,text box,heading,img
+//case sensitive --> page.getByRole("button", { name: "Submit" , exact: false })   //matches <button>Submit</button> but not <button>submit</button>
+//getByText() with text content
+//By text --> page.getByText("Submit")   //matches <button>Submit</button>
+//case sensitive --> page.getByText("Submit", { exact: false })   //matches <button>Submit</button> but not <button>submit</button>
+//page.getByText("remove") //if multiple matches are found, it will return the first one
+//page.locator(".login-form;").getByText("Submit")   //matches <button>Submit</button> but not <button>submit</button>
+//getByTestId() with data-test id attribute
+//By data-test id --> page.getByTestId("submit")   //matches <input data-test="submit">
+//getbylabel,getbyplaceholder, getbyalt, getbytitle
+//By label --> page.getByLabel("Username")   //matches <label for="username">Username</label><input id="username">
+//By placeholder --> page.getByPlaceholder("Enter username")   //matches <input placeholder="Enter username">
+//By alt --> page.getByAltText("User avatar")   //matches <img alt="User avatar">
+//By title --> page.getByTitle("Submit button")   //matches <button title="Submit button">Submit</button>
+//strict mode & chaining
+//const backpackcard=page.locator(".backpack-card").filter({ hasText: "Backpack" })   //matches <backpack-card> that contains text "Backpack"`
+//const backpackcard=page.locator(".backpack-card").filter({ has: page.getByText("Backpack") })   //matches <backpack-card> that contains an element with text "Backpack"
+
+//get all the items in the cart
+//const itemswithAddbutton=page.locator(".inventory_item").filter({ has: page.getByRole("button", { name: "Add to cart" }) })   //matches all the items that have an "Add to cart" button
+// const count = await itemswithAddbutton.count();   //get the count of items with "Add to cart" button
+// console.log(count);
+
+//How many products are on inventory page
+// const allproducts=page.locator(".inventory_item");   //matches all the products on inventory page
+// const count = await allproducts.count();
+// expect(count).toBe(6);
+//xpath
+//page.locator("//button[text()='Submit']")   //matches <button>Submit</button>
+//page.locator("xpath=//input[@name='username']")   //matches <input name="username">
+//page.locator("xpath=//div[@class='login-form
