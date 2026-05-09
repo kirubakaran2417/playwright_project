@@ -110,3 +110,25 @@
 //page.locator("//button[text()='Submit']")   //matches <button>Submit</button>
 //page.locator("xpath=//input[@name='username']")   //matches <input name="username">
 //page.locator("xpath=//div[@class='login-form
+
+
+//actions
+
+//click a button--->page.click("selector")/ locator.click()
+//type into an input field--->page.fill("selector", "value")/ locator.type("value")
+//Press enter on keyboard--->page.press("selector", "Enter")/ locator.press("Enter")
+//select a dropdown--->page.selectOption("selector", "value")/ locator.selectOption("value")
+//check a checkbox--->page.check("selector")/ locator.check()/uncheck a checkbox--->page.uncheck("selector")/ locator.uncheck()
+//hover over an element--->page.hover("selector")/ locator.hover()
+//upload a file--->page.setInputFiles("selector", "path/to/file")/ locator.setInputFiles("path/to/file")
+//drag and drop--->page.dragAndDrop("sourceSelector", "targetSelector")/ locator.dragTo("targetLocator")
+//double click--->page.dblclick("selector")/ locator.dblclick()
+//right click--->page.click("selector", { button: "right" })/ locator.click({ button: "right" })
+//scroll into view--->page.mouse.wheel(0, 100)   //scroll down by 100 pixels
+
+//centralised login via hooks and utils
+//smoke test
+//regression
+//folder structure
+//after
+//config

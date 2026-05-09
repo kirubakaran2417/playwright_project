@@ -1,0 +1,41 @@
+{
+  "validUsers": [
+    {
+      "username": "standard_user",
+      "password": "secret_sauce",
+      "expectURL": "/inventory.html"
+    },
+    {
+      "username": "performance_user",
+      "password": "password2",
+      "expectURL": "/inventory.html"
+    },
+    {
+      "username": "user3",
+      "password": "password3",
+      "expectURL": "/inventory.html"
+    }
+  ],
+  "invalidUsers": [
+    {
+      "username": "locked_out_user",
+      "password": "secret_sauce",
+      "expectError": "Epic sadface: Sorry, this user has been locked out."
+    },
+    {
+      "username": "invalid_user",
+      "password": "invalid_password",
+      "expectError": "Epic sadface: Username and password do not match any user in this service"
+    },
+    {
+      "username": "",
+      "password": "",
+      "expectError": "Epic sadface: Username is required"
+    },
+    {
+      "username": "standard_user",
+      "password": "",
+      "expectError": "Epic sadface: Password is required"
+    }
+  ]
+}

@@ -24,11 +24,23 @@ test.describe("Day 3 - Login page locators", () => {
     const usernameInput = page.locator("#user-name");
     const passwordInput = page.locator("#password");
     const loginButton = page.locator("#login-button");  
+    await expect(page.locator("#user-name")).toHaveText("Thank you for your order!");
+    const title: string = await page.title();
+    expect(title).toBe("Swag Labs");
+    expect(title).not.toBe("Swag Labs1");
+    expect(title).toContain("Swag");
+    expect(title).toHaveLength(9);
 
     await expect(usernameInput).toBeVisible();
     await expect(passwordInput).toBeVisible();
     await expect(loginButton).toBeVisible();
   });
 
-
+  test("ajax calls", async ({ page }) => {
+   await Promise.all([
+      page.waitForResponse(resp=> resp.url().includes("/api/login") && resp.status() === 200),
+      page.getByLabel("country").selectOption("India")
+   ]);
+   await page.getByLabel("state").selectOption("Maharashtra")
+  });
 });
